@@ -127,7 +127,9 @@ export function normalizeDbFromUnknown(raw: unknown): PanicDb {
 }
 
 export async function loadBundledDb(): Promise<PanicDb> {
-  const res = await fetch('/data/panic_analyzer_mvp_data.json', { cache: 'no-store' })
+  // Use BASE_URL so this works on GitHub Pages (/repo-name/...)
+  const url = `${import.meta.env.BASE_URL}data/panic_analyzer_mvp_data.json`
+  const res = await fetch(url, { cache: 'no-store' })
   if (!res.ok) throw new Error(`Failed to load bundled DB: ${res.status}`)
   const raw = (await res.json()) as unknown
   return normalizeRawDb(raw)
