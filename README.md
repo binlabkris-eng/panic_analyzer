@@ -37,3 +37,21 @@ The app includes a **normalization layer** so the JSON can evolve (slightly diff
 
 Internally each record is normalized into `PanicRule` in `src/types/panic.ts`.
 Optional future fields (e.g. `models`, `boardLocation`, `schematicRef`, `verified`, `manualNotes`) are supported and safely ignored if missing.
+
+## GitHub Pages deploy
+
+This repo is configured for GitHub Pages under:
+
+- `https://binlabkris-eng.github.io/panic_analyzer/`
+
+Deploy steps:
+
+1. In GitHub: **Settings → Pages**
+   - Source: **Deploy from a branch**
+   - Branch: **gh-pages** / folder **/(root)**
+2. From your local clone:
+
+```bash
+npm install
+npm run deploy
+```
